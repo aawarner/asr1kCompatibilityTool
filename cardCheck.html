@@ -1,0 +1,126 @@
+<!--
+Copyright (c) 2019 Cisco and/or its affiliates.
+This software is licensed to you under the terms of the Cisco Sample
+Code License, Version 1.1 (the "License"). You may obtain a copy of the
+License at
+               https://developer.cisco.com/docs/licenses
+All use of the material herein must be in accordance with the terms of
+the License. All rights not expressly granted by the License are
+reserved. Unless required by applicable law or agreed to separately in
+writing, software distributed under the License is distributed on an "AS
+IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+or implied.
+-->
+<!DOCTYPE html>
+
+<link rel="stylesheet" href="../css/cui-standard.min.css">
+<html>
+<head>
+<script>document.body.style.zoom = (window.innerWidth / window.outerWidth)</script>
+<script type="text/javascript" src="../js/eval.js"></script>
+</head>
+<body class="cui" onload="platform()">
+    <br>
+    <br>
+    <br>
+    <br>
+    <header class="header">
+        <div class="container">
+            <div class="header-panels">
+                <div class="header-panel">
+                    <a class="header__logo" href="http://www.cisco.com" target="_blank">
+                        <span class="icon-cisco"></span>
+                    </a>
+                    <div class="header__title">ASR 1000 Hardware Compatibility Tool</div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+    <h3 class="half-margin" id="platform"></h3>
+    <div class="half-margin" align="left">
+        <form method="post">
+            <div class="col-md-3">
+                <div class="form-group dropdown">
+                    <div class="form-group__text select">
+                        <label for="rp">RP Options:</label>
+                        <select id="rp" class="dropdown_menu" name="rp">
+                            <option value="RP1">RP1</option>
+                            <option value="RP2">RP2</option>
+                            <option value="RP3">RP3</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group dropdown">
+                    <div class="form-group__text select">
+                        <label for="esp">ESP Options:</label>
+                        <select id="esp" class="dropdown_menu" name="esp">
+                            <option value="ESP5">ESP5</option>
+                            <option value="ESP10">ESP10</option>
+                            <option value="ESP20">ESP20</option>
+                            <option value="ESP40">ESP40</option>
+                            <option value="ESP100">ESP100</option>
+                            <option value="ESP200">ESP200</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group dropdown">
+                    <div class="form-group__text select">
+                        <label for="xip">Interface Processor Options:</label>
+                        <select id="xip" class="dropdown_menu" name="xip">
+                            <option value="N/A">N/A</option>
+                            <option value="SIP10">SIP10</option>
+                            <option value="SIP40">SIP40</option>
+                            <option value="MIP100">MIP100</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group dropdown">
+                    <div class="form-group__text select">
+                        <label for="felc">Fixed Ethernet Line Card Options:</label>
+                        <select id="felc" class="dropdown_menu" name="felc">
+                            <option value="N/A">N/A</option>
+                            <option value="ASR1000-2T+20X1GE">ASR1000-2T+20X1GE</option>
+                            <option value="ASR1000-6TGE">ASR1000-6TGE</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <button class="btn btn--primary" type="button" onclick="checkCards();">Submit</button>
+        </form>
+    </div>
+    <p class="text-danger text-bold text-size-32 half-margin" id="message"></p>
+    <p class="text-success text-bold text-size-32 half-margin" id="success"></p>
+    <p class="text-size-24 half-margin" id="docs"></p>
+    <h4 class="section half-margin" id="tablecap"></h4>
+    <div class="half-margin">
+    <table hidden class="table table--bordered table--selectable table--striped" id="table"></table>
+    </div>
+    <br>
+    <br>
+    <br>
+    <footer class="footer footer--primary">
+            <div class="footer__links">
+                <ul class="list list--inline half-padding-top">
+                    <li><a href="http://www.cisco.com/cisco/web/siteassets/contacts/index.html" target="_blank">Contacts</a></li>
+                    <li><a href="https://secure.opinionlab.com/ccc01/o.asp?id=jBjOhqOJ" target="_blank">Feedback</a></li>
+                    <li><a href="https://www.cisco.com/c/en/us/about/help.html" target="_blank">Help</a></li>
+                    <li><a href="http://www.cisco.com/c/en/us/about/sitemap.html" target="_blank">Site Map</a></li>
+                    <li><a href="https://www.cisco.com/c/en/us/about/legal/terms-conditions.html" target="_blank">Terms & Conditions</a></li></li>
+                    <li><a href="https://www.cisco.com/c/en/us/about/legal/privacy-full.html" target="_blank">Privacy Statement</a></li>
+                    <li><a href="https://www.cisco.com/c/en/us/about/legal/privacy-full.html#cookies" target="_blank">Cookie Policy</a></li>
+                    <li><a href="https://www.cisco.com/c/en/us/about/legal/trademarks.html" target="_blank">Trademarks</a></li>
+                </ul>
+            </div>
+            <p class="half-padding-bottom text-italic absolute-bottom">*This tool is in beta. Cisco ASR 1000 documentation should still be consulted prior to any changes to your environment.</p>
+        </footer>
+</body>
+
+</html>
