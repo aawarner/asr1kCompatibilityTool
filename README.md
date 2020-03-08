@@ -36,8 +36,8 @@ git clone https://github.com/aawarner/asr1kCompatibilityTool.git
 ![Demo](demo.gif)
 
 ## Contributing
-See [CONTRIBUTING](./CONTRIBUTING.md)
+See [CONTRIBUTING](CONTRIBUTING.md)
 
 ## License
-See [LICENSE](./LICENSE.md)
+See [LICENSE](LICENSE.md)
 
