@@ -1,5 +1,4 @@
-# asr1kCompatibilityTool
-ASR 1000 Hardware Compatibility Tool
+# ASR 1000 Hardware Compatibility Tool
 
 The ASR Hardware Compatibility Tool is a tool for determining hardware compatibility of ASR 1000 compenents to include the following:
 
