@@ -10,6 +10,8 @@ The ASR Hardware Compatibility Tool is a tool for determining hardware compatibi
  * Shared Port Adapter (SPA)
  * Ethernet Port Adapter (EPA)
 
+This tool aims to save the user time by preventing the need to reference multiple documents on the various compenents of the ASR 1000 series to determine compatibility. 
+
 #
 
 * [Usage](#usage)
