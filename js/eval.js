@@ -36,7 +36,7 @@ function checkCards() {
     var esp = document.getElementById('esp').value;
     var xip = document.getElementById('xip').value;
     var felc = document.getElementById('felc').value;
-    if ((chassis == "ASR1004" && esp == "ESP5") || (chassis == "ASR1004" && esp == "ESP100") || (chassis == "ASR1004" && esp == "ESP200")) {
+    if ((chassis == "ASR1004" && esp == "ESP100") || (chassis == "ASR1004" && esp == "ESP200")) {
         document.getElementById("message").innerHTML = esp+" is incompatible with "+ chassis;
         espdocs();
         clearfail();
@@ -56,7 +56,7 @@ function checkCards() {
         fixedline();
         clearfail();
     }
-    else if ((xip == "MIP100" && esp == "ESP5") || (xip == "MIP100" && esp == "ESP10") || (xip == "MIP100" && esp == "ESP20") || (xip == "MIP100" && esp == "ESP40")) {
+    else if ((xip == "MIP100" && esp == "ESP20") || (xip == "MIP100" && esp == "ESP40")) {
         document.getElementById("message").innerHTML = xip + " is incompatible with " + esp;
         fixedline();
         clearfail();
@@ -66,12 +66,12 @@ function checkCards() {
         rpdocs();
         clearfail();
     }
-    else if ((chassis == "ASR1006" && esp == "ESP5") || (chassis == "ASR1006" && esp == "ESP200")) {
+    else if (chassis == "ASR1006" && esp == "ESP200") {
         document.getElementById("message").innerHTML = esp+" is incompatible with "+ chassis;
         espdocs();
         clearfail();
     }
-    else if ((chassis == "ASR1006-X" && esp =="ESP5") || (chassis == "ASR1006-X" && esp =="ESP10") || (chassis == "ASR1006-X" && esp =="ESP20") || (chassis == "ASR1006-X" && esp =="ESP200")) {
+    else if ((chassis == "ASR1006-X" && esp =="ESP20") || (chassis == "ASR1006-X" && esp =="ESP200")) {
         document.getElementById("message").innerHTML = esp+" is incompatible with "+ chassis;
         espdocs();
         clearfail();
@@ -81,7 +81,7 @@ function checkCards() {
         asrdocs();
         clearfail();
     }
-    else if ((chassis == "ASR1009-X" && esp =="ESP5") || (chassis == "ASR1009-X" && esp =="ESP10") || (chassis == "ASR1009-X" && esp =="ESP20")) {
+    else if (chassis == "ASR1009-X" && esp =="ESP20") {
         document.getElementById("message").innerHTML = esp+" is incompatible with "+ chassis;
         espdocs();
         clearfail();
@@ -91,7 +91,7 @@ function checkCards() {
         asrdocs();
         clearfail();
     }
-    else if ((chassis == "ASR1013" && esp =="ESP5") || (chassis == "ASR1013" && esp =="ESP10") || (chassis == "ASR1013" && esp =="ESP20")) {
+    else if (chassis == "ASR1013" && esp =="ESP20") {
         document.getElementById("message").innerHTML = esp+" is incompatible with "+ chassis;
         espdocs();
         clearfail();
@@ -106,12 +106,12 @@ function checkCards() {
         fixedline();
         clearfail();
     }
-    else if ((felc == "ASR1000-2T+20X1GE" && esp =="ESP5") || (felc == "ASR1000-2T+20X1GE" && esp =="ESP10") || (felc == "ASR1000-2T+20X1GE" && esp =="ESP20")) {
+    else if (felc == "ASR1000-2T+20X1GE" && esp =="ESP20") {
         document.getElementById("message").innerHTML = felc+" is incompatible with "+ esp;
         fixedline();
         clearfail();
     }
-    else if ((felc == "ASR1000-6TGE" && esp =="ESP5") || (felc == "ASR1000-6TGE" && esp =="ESP10") || (felc == "ASR1000-6TGE" && esp =="ESP20")) {
+    else if (felc == "ASR1000-6TGE" && esp =="ESP20") {
         document.getElementById("message").innerHTML = felc+" is incompatible with "+ esp;
         fixedline();
         clearfail();
@@ -122,7 +122,12 @@ function checkCards() {
         document.getElementById("tablecap").innerHTML = chassis + " Supported Ethernet Port Adapters";
         clearsuccess();
     } 
-
+    else if (xip =="SIP40") {
+        createSIP40Table();
+        document.getElementById("success").innerHTML = chassis + " Configuration is Supported";
+        document.getElementById("tablecap").innerHTML = chassis + " Supported Half-Height SPA's";
+        clearsuccess();
+    } 
     else {
         createTable();
         document.getElementById("success").innerHTML = chassis + " Configuration is Supported";
@@ -138,6 +143,81 @@ function platform() {
 }
 
 function createTable() { 
+    var tbl = document.getElementById("table");
+    if (tbl.rows.length == 0) {
+        let spas = [
+            { PID: "SPA-1X10GE-L-V2", Description: "Cisco 1-Port 10GE LAN-PHY"},
+            { PID: "SPA-1XCHSTM1/OC3", Description: "1-port Channelized STM-1/OC-3c to DS0"},
+            { PID: "SPA-1XOC12-POS", Description: "1-port OC12/STM4 POS"},
+            { PID: "SPA-2XOC12-POS", Description: "2-port OC12/STM4 POS"},
+            { PID: "SPA-4XOC12-POS", Description: "4-port OC-12/STM-4 POS"},
+            { PID: "SPA-1XOC3-ATM-V2", Description: "1-port OC-3c/STM-1 ATM"},
+            { PID: "SPA-2X1GE-V2", Description: "Cisco 2-Port Gigabit Ethernet"},
+            { PID: "SPA-2XCT3/DS0", Description: "2-port Channelized T3 to DS0"},
+            { PID: "SPA-2XOC3-POS", Description: "2-port OC3/STM1 POS"},
+            { PID: "SPA-8XOC3-POS", Description: "8-port OC-3/STM-1 POS"},
+            { PID: "SPA-1XOC48POS/RPR", Description: "1-port OC48/STM16 POS/RPR"},
+            { PID: "SPA-2XOC48POS/RPR", Description: "2-port OC48/STM16 POS/RPR"},
+            { PID: "SPA-2XT3/E3", Description: "2-port Clear Channel T3/E3"},
+            { PID: "SPA-3XOC3-ATM-V2", Description: "3-port OC-3c/STM-1 ATM"},
+            { PID: "SPA-4X1FE-TX-V2", Description: "Cisco 4-Port Fast Ethernet (TX)"},
+            { PID: "SPA-4XCT3/DS0", Description: "4-port Channelized T3 to DS0"},
+            { PID: "SPA-4XOC3-POS", Description: "4-port OC3/STM1 POS"},
+            { PID: "SPA-4XOC48POS/RPR", Description: "4-port OC48/STM16 POS/RPR Shared Port Adapters"},
+            { PID: "SPA-OC192POS-XFP", Description: "1-port OC192/STM64 POS/RPR XFP Optics"},
+            { PID: "SPA-4XT-SERIAL", Description: "Cisco 4-port serial SPA"},
+            { PID: "SPA-4XT3/E3", Description: "4-port Clear Channel T3/E3"},
+            { PID: "SPA-5X1GE-V2", Description: "Cisco 5-Port Gigabit Ethernet"},
+            { PID: "SPA-8X1FE-TX-V2", Description: "Cisco 8-Port Fast Ethernet (TX)"},
+            { PID: "SPA-8X1GE-V2", Description: "Cisco 8-Port Gigabit Ethernet"},
+            { PID: "SPA-8XCHT1/E1", Description: "8-port Channelized T1/E1 to DS0"},
+            { PID: "SPA-1XOC12-ATM-V2", Description: "1-port OC12 STM"},
+            { PID: "SPA-DSP", Description: "Digital Signal Processor SPA"},
+            { PID: "SPA-1X10GE-WL-V2", Description: "Cisco 1-port 10GE LAN/WAN-PHY"},
+            { PID: "SPA-2CHT3-CE-ATM", Description: "2-Port Channelized T3/E3 ATM and Circuit Emulation SPA"},
+            { PID: "SPA-4XOC3-POS-V2", Description: "4-port OC-3/STM-1 POS"},
+            { PID: "SPA-2X1GE-SYNCE", Description: "Cisco Synchronous Ethernet SPA"},
+            { PID: "SPA-24CHT1-CE-ATM", Description: "Cisco 24 Port T1/E1/J1 Circuit Emulation SPA"},
+            { PID: "SPA-1CHSTM1/OC3V2", Description: "1-Port Channelized OC-3/STM-1 SPA, Version 2"},
+            { PID: "SPA-1XOC12-POS-V2", Description: "1-Port OC-12C/STM-4 Multirate POS SPA (license)"},
+            { PID: "SPA-2XOC3-POS-V2", Description: "2-Port OC-3C/STM-1 POS SPA (license)"},
+            { PID: "SPA-2XCT3/DS0-V2", Description: "2-Port Channelized T3 SPA, Version 2"},
+            { PID: "SPA-4XCT3/DS0-V2", Description: "4-Port Channelized T3 SPA, Version 2"},
+            { PID: "SPA-2XT3/E3-V2", Description: "2-Port Clear Channel T3/E3 SPA, Version 2"},
+            { PID: "SPA-4XT3/E3-V2", Description: "4-Port Clear Channel T3/E3 SPA, Version 2"},
+            { PID: "SPA-8XCHT1/E1-V2", Description: "8-Port Channelized T1/E1 SPA, Version 2"},
+          ];
+          function generateTableHead(table, data) {
+            let thead = table.createTHead();
+            let row = thead.insertRow();
+            for (let key of data) {
+              let th = document.createElement("th");
+              let text = document.createTextNode(key);
+              th.appendChild(text);
+              row.appendChild(th);
+            }
+          }
+          function generateTable(table, data) {
+            for (let element of data) {
+              let row = table.insertRow();
+              for (key in element) {
+                let cell = row.insertCell();
+                let text = document.createTextNode(element[key]);
+                cell.appendChild(text);
+              }
+            }
+          }
+
+          let table = document.querySelector("table");
+          let data = Object.keys(spas[0]);
+          generateTable(table, spas);
+          generateTableHead(table, data);
+          table.removeAttribute("hidden");
+    }
+    return false;
+}
+
+function createSIP40Table() { 
     var tbl = document.getElementById("table");
     if (tbl.rows.length == 0) {
         let spas = [
