@@ -30,6 +30,7 @@ function checkChassis() {
 }
 
 function checkCards() {
+    document.getElementById("docspace").innerHTML = "";
     document.getElementById("table").innerHTML = "";
     var chassis = localStorage.getItem('platform');
     var rp = document.getElementById('rp').value;
@@ -345,9 +346,11 @@ function rpdocs() {
         a.setAttribute('class', 'text-size-24 half-margin');
         a.id = "doclink";
         a.title = "RP3 Documentation";
-        a.href = "https://www.cisco.com/c/en/us/td/docs/routers/asr1000/install/guide/rp3/asr1_rp3/asr1_rp3_overview.html#21577";
+        a.href = "https://www.cisco.com/c/en/us/products/collateral/routers/asr-1000-series-aggregation-services-routers/data_sheet_c78-441072.html";
         a.target = "_blank";
         document.body.appendChild(a);
+        var parent = document.getElementById("docspace");
+        parent.insertBefore(a, parent.lastChild)
     }
     return false;
 }
@@ -365,6 +368,8 @@ function fixedline() {
         a.href = "https://www.cisco.com/c/en/us/products/collateral/application-networking-services/wide-area-application-services-waas-software/data-sheet-c78-729778.html";
         a.target = "_blank";
         document.body.appendChild(a);
+        var parent = document.getElementById("docspace");
+        parent.insertBefore(a, parent.lastChild)
     }
     return false;
 }
@@ -382,6 +387,8 @@ function espdocs() {
         a.href = "https://www.cisco.com/c/en/us/products/collateral/routers/asr-1000-series-aggregation-services-routers/datasheet-c78-731640.html";
         a.target = "_blank";
         document.body.appendChild(a);
+        var parent = document.getElementById("docspace");
+        parent.insertBefore(a, parent.lastChild)
     }
     return false;
 }
@@ -399,6 +406,8 @@ function asrdocs() {
         a.href = "https://www.cisco.com/c/en/us/products/collateral/routers/asr-1000-series-aggregation-services-routers/datasheet-c78-731632.html";
         a.target = "_blank";
         document.body.appendChild(a);
+        var parent = document.getElementById("docspace");
+        parent.insertBefore(a, parent.lastChild)
     }
     return false;
 }
